@@ -7,6 +7,9 @@ Chapter 1, titled "Why Optimize?", establishes the fundamental importance and sc
   make setup
   ```
 
+# DB Diagram
+![](./assets/db_er.png)
+
 # Summary of Key Knowledge Points
 
 The main knowledge points covered in this chapter include:
