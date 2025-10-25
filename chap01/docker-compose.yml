@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: __HIDDEN__. # TODO: update password
+      POSTGRES_DB: postgres_air
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'pgdata:/var/lib/postgresql/data'
+      # To auto-run SQL only on first init, place .sql files in ./init and uncomment the line below,
+      # then recreate the volume with: docker compose -f chap01/docker-compose.yml down -v
+      # - './init:/docker-entrypoint-initdb.d'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # One-off seeding service. Run with:
+  #   docker compose -f chap01/docker-compose.yml run --rm db-seed
+  # Make sure postgres is up first:
+  #   docker compose -f chap01/docker-compose.yml up -d postgres
+  db-seed:
+    image: postgres:16-alpine
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    environment:
+      PGPASSWORD: __HIDDEN__. # TODO: update password
+    volumes:
+      - ./postgres_air_2023.sql:/seed/postgres_air_2023.sql:ro
+    command: >-
+      sh -c "psql -h postgres -U admin -d postgres_air -v ON_ERROR_STOP=1 -f /seed/postgres_air_2023.sql"
+
+volumes:
+  pgdata:
