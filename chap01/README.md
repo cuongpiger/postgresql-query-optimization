@@ -1,7 +1,8 @@
 Chapter 1, titled "Why Optimize?", establishes the fundamental importance and scope of query optimization within the context of PostgreSQL database development.
 
 # Setup
-- Download the **postgres_air_2023.sql** dump file is located at 
+- Download the **postgres_air_2023.sql** dump file is located at [https://www.terabox.app/sharing/link?surl=WsSo7blyhLy6f9deLnc2XQ](https://www.terabox.app/sharing/link?surl=WsSo7blyhLy6f9deLnc2XQ)
+- Extract zip file and place the **postgres_air_2023.sql** file into the `chap01/docker/data` directory.
 - Initialize the database using the provided Docker Compose setup and seed the database with sample data.
   ```bash
   make setup
