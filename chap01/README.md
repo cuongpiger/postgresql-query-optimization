@@ -1,5 +1,14 @@
 Chapter 1, titled "Why Optimize?", establishes the fundamental importance and scope of query optimization within the context of PostgreSQL database development.
 
+# Setup
+- Download the **postgres_air_2023.sql** dump file is located at 
+- Initialize the database using the provided Docker Compose setup and seed the database with sample data.
+  ```bash
+  make setup
+  ```
+
+# Summary of Key Knowledge Points
+
 The main knowledge points covered in this chapter include:
 
 ### 1. Defining Optimization and the Core Challenge
