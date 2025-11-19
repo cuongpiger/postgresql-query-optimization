@@ -8,7 +8,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: __HIDDEN__. # TODO: update password
+      POSTGRES_PASSWORD: Qaswedfr@123 # TODO: update password
       POSTGRES_DB: postgres_air
     ports:
       - '5432:5432'
@@ -34,7 +34,7 @@ services:
         condition: service_healthy
     restart: "no"
     environment:
-      PGPASSWORD: __HIDDEN__. # TODO: update password
+      PGPASSWORD: Qaswedfr@123 # TODO: update password
     volumes:
       - ./postgres_air_2023.sql:/seed/postgres_air_2023.sql:ro
     command: >-
